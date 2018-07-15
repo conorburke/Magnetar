@@ -6,7 +6,7 @@
 	"scripts": {
 		"precommit": "pretty-quick --staged",
 		"server": "nodemon index.js",
-		"test": "jest",
+		"test": "jest -f 'index.test.js'",
 		"client": "npm run start --prefix client",
 		"dev": "concurrently \"npm run server\" \"npm run client\""
 	},
