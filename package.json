@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"precommit": "pretty-quick --staged",
+		"start": "node index.js",
 		"server": "nodemon index.js",
 		"test": "jest -f 'index.test.js'",
 		"client": "npm run start --prefix client",
