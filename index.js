@@ -20,9 +20,20 @@ app.listen(PORT, () => {
 	console.log(`listening on port ${PORT}`);
 });
 
-app.get('/', (req, res) => {
-	res.send({ tools: 'Await!' });
-});
+if (process.env.NODE_ENV === 'production') {
+	//express will serve up production assets
+	app.use(express.static('client/build'));
+
+	//express will serve up index.html if it doesn't recognize route
+	const path = require('path');
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+	});
+}
+
+// app.get('/', (req, res) => {
+// 	res.send({ tools: 'Await!' });
+// });
 
 //routes used to test out knex syntax
 
