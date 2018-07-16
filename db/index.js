@@ -3,8 +3,8 @@ module.exports = require('knex')({
 	version: '10.0',
 	connection: {
 		host: process.env.DATABASE_URL,
-		user: 'seker',
+		user: process.env.DB_USER,
 		password: process.env.DB_PASSWORD,
-		database: 'seker_dev'
+		database: process.env.DB_NAME
 	}
 });
