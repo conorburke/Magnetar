@@ -19,7 +19,7 @@ class Tool extends Component {
 						<Typography color="textSecondary">
 							{this.props.tool.category}
 						</Typography>
-						<Typography component="p" style={{ overflow: 'scroll' }}>
+						<Typography component="p" style={{ overflow: 'auto' }}>
 							{this.props.tool.description}
 						</Typography>
 					</CardContent>

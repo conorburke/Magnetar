@@ -14,7 +14,7 @@ class Tools extends Component {
 	renderTools = () => {
 		console.log('rendering tools');
 		return this.props.tools.data.tools.map(tool => {
-			return <Tool tool={tool} />;
+			return <Tool key={tool.id} tool={tool} />;
 			// return <li key={tool.id}>{tool.category}</li>;
 		});
 	};
