@@ -4,10 +4,7 @@ export const toolsQuery = `{
     title 
     category 
     description 
-    price 
-    owner_id 
-    start_date 
-    end_date 
+    price  
     tool_pictures { 
       id 
     }   

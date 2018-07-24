@@ -2,6 +2,7 @@ const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
 
 const db = require('../db');
+const DepotType = require('./depotType');
 const RentedToolType = require('./rentedToolType');
 const ToolType = require('./toolType');
 const ToolPictureType = require('./toolPictureType');
@@ -10,6 +11,12 @@ const UserType = require('./userType');
 const RootQuery = new GraphQLObjectType({
 	name: 'RootQueryType',
 	fields: () => ({
+		depots: {
+			type: new GraphQLList(DepotType),
+			resolve() {
+				return db.select().from('depots');
+			}
+		},
 		rentedTools: {
 			type: new GraphQLList(RentedToolType),
 			resolve() {
