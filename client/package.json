@@ -5,6 +5,12 @@
 	"proxy": {
 		"/oracle": {
 			"target": "http://localhost:7777"
+		},
+		"/auth/google": {
+			"target": "http://localhost:7777"
+		},
+		"/api/*": {
+			"target": "http://localhost:7777"
 		}
 	},
 	"dependencies": {
