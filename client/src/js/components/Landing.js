@@ -7,6 +7,9 @@ import TextField from '@material-ui/core/TextField';
 
 // import anvil from '../../images/anvil.svg';
 import blacksmith from '../../images/blacksmith.png';
+import circularSaw from '../../images/circular-saw.jpg';
+import jigsaw from '../../images/jigsaw.jpg';
+import woodworking from '../../images/woodworking.jpg';
 
 class Landing extends Component {
 	constructor(props) {
@@ -32,9 +35,18 @@ class Landing extends Component {
 					<h1>Seker!</h1>
 				</div>
 				<div style={{ display: 'flex' }}>
-					<div style={{ flex: 3, display: 'flex', justifyContent: 'center' }}>
+					<div
+						style={{
+							flex: 3,
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							justifyContent: 'center'
+						}}
+					>
+						<h3>Rent Tools</h3>
 						<img
-							src={blacksmith}
+							src={circularSaw}
 							alt="Celtic God of Smiths"
 							style={{
 								margin: '50px',
@@ -44,7 +56,49 @@ class Landing extends Component {
 							}}
 						/>
 					</div>
-					<div style={{ flex: 2 }}>
+					<div
+						style={{
+							flex: 3,
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							justifyContent: 'center'
+						}}
+					>
+						<h3>Loan Tools</h3>
+						<img
+							src={jigsaw}
+							alt="Celtic God of Smiths"
+							style={{
+								margin: '50px',
+								border: '5px solid black',
+								maxWidth: '60%',
+								maxHeight: '400px'
+							}}
+						/>
+					</div>
+					<div
+						style={{
+							flex: 3,
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							justifyContent: 'center'
+						}}
+					>
+						<h3>Get Work Done</h3>
+						<img
+							src={woodworking}
+							alt="Celtic God of Smiths"
+							style={{
+								margin: '50px',
+								border: '5px solid black',
+								maxWidth: '60%',
+								maxHeight: '400px'
+							}}
+						/>
+					</div>
+					{/* <div style={{ flex: 2 }}>
 						<Tabs
 							value={this.state.tabValue}
 							indicatorColor="primary"
@@ -123,7 +177,7 @@ class Landing extends Component {
 								</div>
 							</div>
 						</form>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -10,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
+import * as actions from '../actions';
 import theme from '../theme';
 
 class Header extends Component {
@@ -19,6 +21,72 @@ class Header extends Component {
 			navigatorMenu: null,
 			profileMenu: null
 		};
+	}
+
+	componentDidMount() {
+		this.props.fetchUser();
+	}
+
+	renderHeader() {
+		const profileOpen = Boolean(this.state.profileMenu);
+		console.log('header auth', this.props.auth);
+		switch (this.props.auth) {
+			case null:
+			case false:
+				return (
+					<MenuItem>
+						<Typography
+							variant="title"
+							color="inherit"
+							style={{ display: 'flex', alignItems: 'center' }}
+						>
+							<a
+								href="/auth/google"
+								style={{ textDecoration: 'none', color: 'white' }}
+							>
+								Log In
+							</a>
+						</Typography>
+					</MenuItem>
+				);
+			default:
+				return (
+					<div>
+						<IconButton
+							aria-owns={profileOpen ? 'profile-appbar' : null}
+							aria-haspopup="true"
+							onClick={this.handleProfileMenu}
+							color="inherit"
+						>
+							<AccountCircle />
+						</IconButton>
+						<Menu
+							id="profile-appbar"
+							anchorEl={this.state.profileMenu}
+							anchorOrigin={{
+								vertical: 'top',
+								horizontal: 'right'
+							}}
+							transformOrigin={{
+								vertical: 'top',
+								horizontal: 'right'
+							}}
+							open={profileOpen}
+							onClose={this.handleProfileClose}
+						>
+							<MenuItem>
+								<Link to="/profile" style={{ textDecoration: 'none' }}>
+									Profile
+								</Link>
+							</MenuItem>
+							<MenuItem onClick={this.handleProfileClose}>
+								<a href="/api/logout">Log Out</a>
+							</MenuItem>
+							<MenuItem onClick={this.handleProfileClose}>Close</MenuItem>
+						</Menu>
+					</div>
+				);
+		}
 	}
 
 	handleNavigotorMenu = event => {
@@ -38,7 +106,6 @@ class Header extends Component {
 	};
 
 	render() {
-		const profileOpen = Boolean(this.state.profileMenu);
 		const navigatorOpen = Boolean(this.state.navigatorMenu);
 		return (
 			<AppBar
@@ -94,40 +161,18 @@ class Header extends Component {
 							</Typography>
 						</MenuItem>
 					</div>
-					<IconButton
-						aria-owns={profileOpen ? 'profile-appbar' : null}
-						aria-haspopup="true"
-						onClick={this.handleProfileMenu}
-						color="inherit"
-					>
-						<AccountCircle />
-					</IconButton>
-					<Menu
-						id="profile-appbar"
-						anchorEl={this.state.profileMenu}
-						anchorOrigin={{
-							vertical: 'top',
-							horizontal: 'right'
-						}}
-						transformOrigin={{
-							vertical: 'top',
-							horizontal: 'right'
-						}}
-						open={profileOpen}
-						onClose={this.handleProfileClose}
-					>
-						<MenuItem>
-							<Link to="/profile" style={{ textDecoration: 'none' }}>
-								Profile
-							</Link>
-						</MenuItem>
-						<MenuItem onClick={this.handleProfileClose}>Log Out</MenuItem>
-						<MenuItem onClick={this.handleProfileClose}>Close</MenuItem>
-					</Menu>
+					{this.renderHeader()}
 				</Toolbar>
 			</AppBar>
 		);
 	}
 }
 
-export default Header;
+function mapStateToProps(state) {
+	return { auth: state.auth };
+}
+
+export default connect(
+	mapStateToProps,
+	actions
+)(Header);
