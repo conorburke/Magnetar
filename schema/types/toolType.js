@@ -7,7 +7,7 @@ const {
 	GraphQLFloat
 } = graphql;
 
-const db = require('../db');
+const db = require('../../db');
 const DepotParentType = require('./depotParentType');
 const RentedToolType = require('./rentedToolType');
 const ToolPictureType = require('./toolPictureType');
@@ -24,10 +24,11 @@ const ToolType = new GraphQLObjectType({
 		depot: {
 			type: DepotParentType,
 			resolve(parentValue) {
+				console.log('toolParentVAlue', parentValue);
 				return db('depots')
 					.join('tools', 'tools.depot_id', '=', 'depots.id')
 					.select()
-					.where('tools.depot_id', parentValue.id)
+					.where('tools.depot_id', parentValue.depot_id)
 					.then(rows => rows[0]);
 			}
 		},

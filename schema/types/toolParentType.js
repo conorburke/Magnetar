@@ -7,7 +7,7 @@ const {
 	GraphQLFloat
 } = graphql;
 
-const db = require('../db');
+const db = require('../../db');
 const ToolPictureType = require('./toolPictureType');
 
 const ToolParentType = new GraphQLObjectType({

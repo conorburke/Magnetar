@@ -1,7 +1,7 @@
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLString, GraphQLID } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt } = graphql;
 
-const db = require('../db');
+const db = require('../../db');
 const UserParentType = require('./userParentType');
 
 const DepotParentType = new GraphQLObjectType({
@@ -12,7 +12,7 @@ const DepotParentType = new GraphQLObjectType({
 		address_2: { type: GraphQLString },
 		city: { type: GraphQLString },
 		region: { type: GraphQLString },
-		zipcode: { type: GraphQLString },
+		zipcode: { type: GraphQLInt },
 		owner_id: { type: GraphQLID },
 		owner: {
 			type: UserParentType,

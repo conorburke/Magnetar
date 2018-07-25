@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLID, GraphQLFloat } = graphql;
 
-const db = require('../db');
+const db = require('../../db');
 const ToolParentType = require('./toolParentType');
 
 const RentedToolType = new GraphQLObjectType({
