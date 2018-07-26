@@ -17,10 +17,32 @@ const RootQuery = new GraphQLObjectType({
 				return db.select().from('depots');
 			}
 		},
+		depot: {
+			type: DepotType,
+			args: { id: { type: new GraphQLNonNull(GraphQLID) } },
+			resolve(parentValue, { id }) {
+				return db
+					.select()
+					.from('depots')
+					.where({ id: parseInt(id) })
+					.then(res => res[0]);
+			}
+		},
 		rentedTools: {
 			type: new GraphQLList(RentedToolType),
 			resolve() {
 				return db.select().from('rented_tools');
+			}
+		},
+		rentedTool: {
+			type: RentedToolType,
+			args: { id: { type: new GraphQLNonNull(GraphQLID) } },
+			resolve(parentValue, { id }) {
+				return db
+					.select()
+					.from('rented_tools')
+					.where({ id: parseInt(id) })
+					.then(res => res[0]);
 			}
 		},
 		tools: {
@@ -44,6 +66,17 @@ const RootQuery = new GraphQLObjectType({
 			type: new GraphQLList(ToolPictureType),
 			resolve() {
 				return db.select().from('tool_pictures');
+			}
+		},
+		toolPicture: {
+			type: ToolPictureType,
+			args: { id: { type: new GraphQLNonNull(GraphQLID) } },
+			resolve(parentValue, { id }) {
+				return db
+					.select()
+					.from('tool_pictures')
+					.where({ id: parseInt(id) })
+					.then(res => res[0]);
 			}
 		},
 		users: {

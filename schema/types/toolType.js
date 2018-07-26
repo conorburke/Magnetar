@@ -24,7 +24,6 @@ const ToolType = new GraphQLObjectType({
 		depot: {
 			type: DepotParentType,
 			resolve(parentValue) {
-				console.log('toolParentVAlue', parentValue);
 				return db('depots')
 					.join('tools', 'tools.depot_id', '=', 'depots.id')
 					.select()

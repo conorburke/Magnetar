@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 class Tool extends Component {
 	render() {
 		return (
-			<div style={{ margin: '15px', width: '340px', height: '280px' }}>
+			<div style={{ margin: '15px', width: '340px', height: '200px' }}>
 				<Card>
 					<CardContent>
 						<Typography color="textSecondary">Location: San Diego</Typography>
