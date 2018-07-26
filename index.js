@@ -16,7 +16,7 @@ app.use(
 	'/oracle',
 	graphqlHTTP({
 		schema,
-		graphiql: true
+		graphiql: process.env.NODE_ENV === 'production' ? false : true
 	})
 );
 

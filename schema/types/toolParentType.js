@@ -4,35 +4,32 @@ const {
 	GraphQLObjectType,
 	GraphQLString,
 	GraphQLID,
-	GraphQLFloat,
-	GraphQLInt
+	GraphQLFloat
 } = graphql;
 
-const db = require('../db');
+const db = require('../../db');
 const ToolPictureType = require('./toolPictureType');
 
-const ToolType = new GraphQLObjectType({
-	name: 'ToolType',
+const ToolParentType = new GraphQLObjectType({
+	name: 'ToolParentType',
 	fields: () => ({
 		id: { type: GraphQLID },
 		title: { type: GraphQLString },
 		category: { type: GraphQLString },
 		description: { type: GraphQLString },
 		price: { type: GraphQLFloat },
-		owner_id: { type: GraphQLID },
+		depot_id: { type: GraphQLID },
 		tool_pictures: {
 			type: new GraphQLList(ToolPictureType),
 			resolve(parentValue) {
 				return db('tools')
-					.join('tool_pictures', 'tools.id', '=', 'tool_pictures.tool_id')
+					.join('tool_pictures', 'tool_pictures.tool_id', '=', 'tools.id')
 					.select()
 					.where('tool_pictures.tool_id', parentValue.id)
 					.then(rows => rows);
 			}
-		},
-		start_date: { type: GraphQLInt },
-		end_date: { type: GraphQLInt }
+		}
 	})
 });
 
-module.exports = ToolType;
+module.exports = ToolParentType;

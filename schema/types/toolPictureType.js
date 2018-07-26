@@ -5,8 +5,8 @@ const ToolPictureType = new GraphQLObjectType({
 	name: 'ToolPictureType',
 	fields: () => ({
 		id: { type: GraphQLID },
-		tool_id: { type: GraphQLID },
-		image: { type: GraphQLString }
+		image: { type: GraphQLString },
+		tool_id: { type: GraphQLID }
 	})
 });
 

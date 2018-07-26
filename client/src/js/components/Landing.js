@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
-import Button from '@material-ui/core/Button';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
-import TextField from '@material-ui/core/TextField';
+// import Button from '@material-ui/core/Button';
+// import Tab from '@material-ui/core/Tab';
+// import Tabs from '@material-ui/core/Tabs';
+// import TextField from '@material-ui/core/TextField';
 
-// import anvil from '../../images/anvil.svg';
-import blacksmith from '../../images/blacksmith.png';
 import circularSaw from '../../images/circular-saw.jpg';
 import jigsaw from '../../images/jigsaw.jpg';
 import woodworking from '../../images/woodworking.jpg';
