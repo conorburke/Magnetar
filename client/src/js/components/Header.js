@@ -11,7 +11,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-import * as actions from '../actions';
 import theme from '../theme';
 
 class Header extends Component {
@@ -21,10 +20,6 @@ class Header extends Component {
 			navigatorMenu: null,
 			profileMenu: null
 		};
-	}
-
-	componentDidMount() {
-		this.props.fetchUser();
 	}
 
 	renderHeader() {
@@ -172,7 +167,4 @@ function mapStateToProps(state) {
 	return { auth: state.auth };
 }
 
-export default connect(
-	mapStateToProps,
-	actions
-)(Header);
+export default connect(mapStateToProps)(Header);
