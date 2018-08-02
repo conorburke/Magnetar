@@ -41,9 +41,15 @@ passport.use(
 				.where('google_id', profile.id)
 				.then(rows => {
 					console.log('rooooooows', rows);
+					console.log('email', profile.emails);
 					if (rows.length === 0) {
 						db('users')
-							.insert({ google_id: profile.id })
+							.insert({
+								google_id: profile.id,
+								first_name: profile.name.givenName || '',
+								last_name: profile.name.familyName || '',
+								email: profile.emails[0] ? profile.emails[0].value : ''
+							})
 							.then(() => {
 								db.select()
 									.from('users')
