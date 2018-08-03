@@ -27,6 +27,7 @@ class Header extends Component {
 		console.log('header auth', this.props.auth);
 		switch (this.props.auth) {
 			case null:
+				return;
 			case false:
 				return (
 					<MenuItem>
