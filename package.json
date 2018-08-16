@@ -9,15 +9,15 @@
 		"server": "nodemon index.js",
 		"test": "jest -f 'index.test.js'",
 		"client": "npm run start --prefix client",
-		"dev": "concurrently \"npm run server\" \"npm run client\"",
+		"dev": "concurrently \"yarn server\" \"yarn client\"",
 		"heroku-postbuild": "npm install --only=dev --prefix client && npm install --prefix client && npm run build --prefix client"
 	},
 	"author": "conorburke",
 	"license": "MIT",
 	"engines": {
-		"node": "10.6.0",
+		"node": "10.8.0",
 		"npm": "6.1.0",
-		"yarn": "1.7.0"
+		"yarn": "1.9.4"
 	},
 	"dependencies": {
 		"concurrently": "^3.6.0",

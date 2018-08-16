@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import Landing from './components/Landing';
 import Profile from './components/Profile';
 import Tools from './components/Tools';
-import theme from './theme';
+import magnetar from '../images/magnetar.jpg';
 
 class App extends Component {
 	componentDidMount() {
@@ -17,9 +17,9 @@ class App extends Component {
 
 	render() {
 		return (
-			<div style={{ backgroundColor: theme.palette.mobile.secondary }}>
+			<div>
 				<BrowserRouter>
-					<div style={{ height: '100vh' }}>
+					<div style={{ height: '100vh', backgroundImage: `url(${magnetar})` }}>
 						<Header />
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/profile" component={Profile} />

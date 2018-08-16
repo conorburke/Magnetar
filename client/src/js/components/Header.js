@@ -30,20 +30,54 @@ class Header extends Component {
 				return;
 			case false:
 				return (
-					<MenuItem>
-						<Typography
-							variant="title"
+					<div>
+						<IconButton
+							aria-owns={profileOpen ? 'profile-appbar' : null}
+							aria-haspopup="true"
+							onClick={this.handleProfileMenu}
 							color="inherit"
-							style={{ display: 'flex', alignItems: 'center' }}
 						>
-							<a
-								href="/auth/google"
-								style={{ textDecoration: 'none', color: 'white' }}
-							>
-								Log In
-							</a>
-						</Typography>
-					</MenuItem>
+							<AccountCircle />
+						</IconButton>
+						<Menu
+							id="profile-appbar"
+							anchorEl={this.state.profileMenu}
+							anchorOrigin={{
+								vertical: 'top',
+								horizontal: 'right'
+							}}
+							transformOrigin={{
+								vertical: 'top',
+								horizontal: 'right'
+							}}
+							open={profileOpen}
+							onClose={this.handleProfileClose}
+						>
+							<MenuItem>
+								<Link to="/profile" style={{ textDecoration: 'none' }}>
+									Profile
+								</Link>
+							</MenuItem>
+							<MenuItem onClick={this.handleProfileClose}>
+								<a href="/auth/google">Log In with Google</a>
+							</MenuItem>
+							<MenuItem onClick={this.handleProfileClose}>Close</MenuItem>
+						</Menu>
+					</div>
+					// <MenuItem>
+					// 	<Typography
+					// 		variant="title"
+					// 		color="inherit"
+					// 		style={{ display: 'flex', alignItems: 'center' }}
+					// 	>
+					// 		<a
+					// 			href="/auth/google"
+					// 			style={{ textDecoration: 'none', color: 'white' }}
+					// 		>
+					// 			Log In
+					// 		</a>
+					// 	</Typography>
+					// </MenuItem>
 				);
 			default:
 				return (
@@ -152,7 +186,7 @@ class Header extends Component {
 								style={{ display: 'flex', alignItems: 'center' }}
 							>
 								<Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
-									Seker
+									Magnetar
 								</Link>
 							</Typography>
 						</MenuItem>

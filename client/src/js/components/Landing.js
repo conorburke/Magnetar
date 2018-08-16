@@ -28,11 +28,11 @@ class Landing extends Component {
 
 	render() {
 		return (
-			<div style={{ marginTop: '5%' }}>
+			<div className="landing-div" style={{ marginTop: '5%' }}>
 				<div style={{ display: 'flex', justifyContent: 'center' }}>
-					<h1>Seker!</h1>
+					<h1>Magnetar</h1>
 				</div>
-				<div style={{ display: 'flex' }}>
+				<div className="landing-pictures" style={{ display: 'flex' }}>
 					<div
 						style={{
 							flex: 3,
