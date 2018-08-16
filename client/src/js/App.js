@@ -19,7 +19,14 @@ class App extends Component {
 		return (
 			<div>
 				<BrowserRouter>
-					<div style={{ height: '100vh', backgroundImage: `url(${magnetar})` }}>
+					<div
+						id="router-container"
+						style={{
+							height: '100vh',
+							backgroundImage: `url(${magnetar})`,
+							backgroundSize: 'cover'
+						}}
+					>
 						<Header />
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/profile" component={Profile} />
