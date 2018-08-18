@@ -3,6 +3,7 @@ const cookieSession = require('cookie-session');
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 
 // const db = require('./db');
 const schema = require('./schema');
@@ -27,12 +28,15 @@ app.listen(PORT, () => {
 app.use(
 	cookieSession({
 		maxAge: 1000 * 60 * 60 * 24 * 30,
-		keys: [process.env.COOKIE_SECRET]
+		keys: [`${process.env.COOKIE_KEY}`]
 	})
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 require('./routes/authRoutes')(app);
 
