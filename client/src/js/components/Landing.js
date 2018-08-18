@@ -28,7 +28,7 @@ class Landing extends Component {
 
 	render() {
 		return (
-			<div className="landing-div" style={{ marginTop: '5%' }}>
+			<div className="main-content">
 				<div style={{ display: 'flex', justifyContent: 'center' }}>
 					<h1>Magnetar</h1>
 				</div>

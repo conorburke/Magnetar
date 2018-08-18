@@ -27,8 +27,8 @@ class Tools extends Component {
 		// });
 		return (
 			<div
+				className="main-content"
 				style={{
-					marginTop: '5%',
 					display: 'flex',
 					justifyContent: 'center',
 					flexDirection: 'column',

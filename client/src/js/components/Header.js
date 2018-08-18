@@ -64,20 +64,6 @@ class Header extends Component {
 							<MenuItem onClick={this.handleProfileClose}>Close</MenuItem>
 						</Menu>
 					</div>
-					// <MenuItem>
-					// 	<Typography
-					// 		variant="title"
-					// 		color="inherit"
-					// 		style={{ display: 'flex', alignItems: 'center' }}
-					// 	>
-					// 		<a
-					// 			href="/auth/google"
-					// 			style={{ textDecoration: 'none', color: 'white' }}
-					// 		>
-					// 			Log In
-					// 		</a>
-					// 	</Typography>
-					// </MenuItem>
 				);
 			default:
 				return (
@@ -109,7 +95,7 @@ class Header extends Component {
 									Profile
 								</Link>
 							</MenuItem>
-							<MenuItem onClick={this.handleProfileClose}>
+							<MenuItem>
 								<a href="/api/logout">Log Out</a>
 							</MenuItem>
 							<MenuItem onClick={this.handleProfileClose}>Close</MenuItem>

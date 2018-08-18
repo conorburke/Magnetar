@@ -11,7 +11,7 @@ class Footer extends Component {
 				}}
 			>
 				<span style={{ color: 'white' }}>
-					Coming soon to the App Store and Google Play
+					Companion Mobile App coming soon to the App Store and Google Play
 				</span>
 			</footer>
 		);

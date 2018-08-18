@@ -17,12 +17,11 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>
+			<div id="router-container">
 				<BrowserRouter>
 					<div
-						id="router-container"
+						className="component-container"
 						style={{
-							height: '100vh',
 							backgroundImage: `url(${magnetar})`,
 							backgroundSize: 'cover'
 						}}
