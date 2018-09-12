@@ -22,7 +22,7 @@ module.exports = app => {
 		req.session = null;
 		// res.send(req.user);
 		console.log('goodbye!');
-		console.log('req', req);
+		res.cookie('express:sess', '', { expires: new Date() });
 		res.redirect('/');
 	});
 
