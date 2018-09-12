@@ -20,8 +20,9 @@ module.exports = app => {
 	app.get('/api/logout', (req, res) => {
 		//kills cookie
 		req.session = null;
-		req.logOut();
 		// res.send(req.user);
+		console.log('goodbye!');
+		console.log('req', req);
 		res.redirect('/');
 	});
 
