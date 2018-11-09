@@ -17,10 +17,11 @@ const DepotParentType = new GraphQLObjectType({
 		owner: {
 			type: UserParentType,
 			resolve(parentValue) {
+				console.log(parentValue);
 				return db('users')
 					.join('depots', 'depots.owner_id', '=', 'users.id')
 					.select()
-					.where('depots.owner_id', parentValue.id)
+					.where('depots.owner_id', parentValue.owner_id)
 					.then(rows => rows[0]);
 			}
 		}
