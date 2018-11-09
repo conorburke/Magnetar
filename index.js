@@ -1,9 +1,9 @@
 require('dotenv').config();
+const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const passport = require('passport');
-const bodyParser = require('body-parser');
 
 // const db = require('./db');
 const schema = require('./schema');
@@ -50,24 +50,3 @@ if (process.env.NODE_ENV === 'production') {
 		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 	});
 }
-
-// app.get('/', (req, res) => {
-// 	res.send({ tools: 'Await!' });
-// });
-
-//routes used to test out knex syntax
-
-// app.get('/knex', (req, res) => {
-//   db('tools').join('tool_pictures', 'tools.id', '=', 'tool_pictures.tool_id').select('tools.id', 'tool_pictures.image').where('tool_pictures.id', 1).then(rows => {
-//     console.log(rows);
-//     res.send(rows)
-//   });
-// });
-
-// app.get('/knex/:id', (req, res) => {
-//   const id = req.params.id;
-//   const tools = db.select().from('tools').where({id}).then(rows => {
-//     console.log(rows);
-//     res.send(rows);
-//   });
-// });

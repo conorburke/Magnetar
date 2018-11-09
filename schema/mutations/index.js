@@ -12,6 +12,7 @@ const DepotType = require('../types/depotType');
 const RentedToolType = require('../types/rentedToolType');
 const ToolPictureType = require('../types/toolPictureType');
 const ToolType = require('../types/toolType');
+const UserType = require('../types/userType');
 
 const mutations = new GraphQLObjectType({
 	name: 'Mutation',
@@ -92,6 +93,25 @@ const mutations = new GraphQLObjectType({
 					image,
 					tool_id
 				});
+			}
+		},
+		updateUser: {
+			type: UserType,
+			args: {
+				first_name: { type: GraphQLString },
+				last_name: { type: GraphQLString },
+				email: { type: GraphQLString },
+				phone_number: { type: GraphQLString }
+			},
+			resolve(parentValue, { first_name, last_name, email, phone_number }) {
+				return db('users')
+					.where({ email })
+					.update({
+						first_name,
+						last_name,
+						email,
+						phone_number
+					});
 			}
 		},
 		deleteDepot: {
