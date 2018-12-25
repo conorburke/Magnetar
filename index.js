@@ -13,6 +13,8 @@ require('./services/passport');
 const app = express();
 const PORT = process.env.PORT;
 
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(
 	'/oracle',
 	graphqlHTTP({
@@ -34,9 +36,6 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 require('./routes/authRoutes')(app);
 
